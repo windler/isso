@@ -17,7 +17,11 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
 
     function init() {
         isso_thread = $('#isso-thread');
-        heading = $.new("h4");
+        heading = isso_thread.getAttribute("heading")
+        if (heading == "" || heading == null || heading == undefined) {
+            heading = "h4"
+        }
+        heading = $.new(heading);
 
         if (config["css"] && $("style#isso-style") === null) {
             var style = $.new("style");
